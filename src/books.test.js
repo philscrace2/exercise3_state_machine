@@ -19,6 +19,10 @@ it("should hit backend API and load 3 viewmodel books when 3 books loaded from t
     expect(httpGateway.get).toHaveBeenCalledWith("https://api.logicroom.co/api/philscrace@gmail.com/books");
 
     expect(viewModel.length).toBe(3);
+    expect(viewModel[0].name).toBe("Wind in the willows");
+    expect(viewModel[1].name).toBe("I, Robot");
+    expect(viewModel[2].name).toBe("The Hobbit");
+
 
 
 });
