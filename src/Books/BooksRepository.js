@@ -1,12 +1,12 @@
-import HttpGateway from "../Shared/HttpGateway.js";
+import httpGateway from "../Shared/HttpGateway.js";
 import Observable from "../Shared/Observable";
 
 class BooksRepository {
   programmersModel = null;
-
+  apiUrl = "https://api.logicroom.co/api/philscrace@gmail.com";
   constructor() {
     this.programmersModel = new Observable([]);
-    this.gateway = new HttpGateway();
+    this.gateway = httpGateway;
   }
 
   getBooks = async (callback) => {
@@ -16,7 +16,7 @@ class BooksRepository {
   };
 
   loadApiData = async () => {
-    const booksDto = await this.gateway.get("/books");
+    const booksDto = await this.gateway.get(this.apiUrl + "/books");
     this.programmersModel.value = booksDto.result.map((bookDto) => {
       return bookDto;
     });

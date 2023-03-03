@@ -1,13 +1,13 @@
-export default class HttpGateway {
-  apiUrl = "https://api.logicroom.co/api/pete@logicroom.co";
+class HttpGateway {
+  
   get = async (path) => {
-    const response = await fetch(this.apiUrl + path);
+    const response = await fetch(path);
     const booksDto = response.json();
     return booksDto;
   };
 
   post = async (path, requestDto) => {
-    const response = await fetch(this.apiUrl + path, {
+    const response = await fetch(path, {
       method: "POST",
       body: JSON.stringify(requestDto),
       headers: {
@@ -18,3 +18,6 @@ export default class HttpGateway {
     return responseDto;
   };
 }
+
+const httpGateway = new HttpGateway();
+export default httpGateway;
